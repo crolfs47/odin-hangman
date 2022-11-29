@@ -11,13 +11,12 @@ class Game
     @game_over = false
     @word = select_random_word
     @guessed_word = ['_'] * @word.length
-    @incorrect_guesses = []
-    @correct_guesses = []
+    @guessed_letters = []
     play_game
   end
 
   def play_game
-    p @word
+    # p @word
     take_turn until @game_over
   end
 
@@ -32,19 +31,21 @@ class Game
 
   def take_turn
     guess = guess_letter
+    @guessed_letters.push(guess)
     evaluate_guess(guess)
     check_game_over
     display_guessed_word(@guessed_word)
     display_guesses_remaining(@guess_count) unless @game_over
+    display_guessed_letters(@guessed_letters) unless @game_over
   end
 
   def guess_letter
     puts 'Please enter a letter:'
     guess = gets.chomp
-    if guess.length == 1 && guess.downcase.match(/^[a-z]$/)
+    if guess.length == 1 && guess.downcase.match(/^[a-z]$/) && !@guessed_letters.include?(guess)
       guess.downcase
     else
-      puts 'Please input only one letter'
+      puts "Please input only one letter that you haven't already guessed"
       guess_letter
     end
   end

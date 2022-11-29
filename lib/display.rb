@@ -12,7 +12,11 @@ module Display
   end
 
   def display_guesses_remaining(guess_count)
-    puts "Incorrect guesses remaining: #{guess_count}\n\n"
+    puts "Incorrect guesses remaining: #{guess_count}"
+  end
+
+  def display_guessed_letters(guessed_letters)
+    puts "Letters already guessed: #{guessed_letters.join(' ')}\n\n"
   end
 
   def display_loser(word)
