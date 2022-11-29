@@ -1,4 +1,10 @@
+# game class initializes the game and handles the game logic
+
+require_relative 'display'
+
 class Game
+  include Display
+
   def initialize
     puts 'Welcome to Hangman!'
     @guess_count = 8
@@ -28,8 +34,8 @@ class Game
     guess = guess_letter
     evaluate_guess(guess)
     check_game_over
-    display_guessed_word
-    display_guesses_remaining unless @game_over
+    display_guessed_word(@guessed_word)
+    display_guesses_remaining(@guess_count) unless @game_over
   end
 
   def guess_letter
@@ -60,22 +66,14 @@ class Game
     end
   end
 
-  def display_guessed_word
-    puts "#{@guessed_word.join(' ')}"
-  end
-
-  def display_guesses_remaining
-    puts "Incorrect guesses remaining: #{@guess_count}\n\n"
-  end
-
   def check_game_over
     if @guess_count.zero?
       @game_over = true
-      puts "You ran out of guesses! The word you were trying to guess was: #{@word}"
+      display_loser(@word)
     end
     if @guessed_word.join == @word
       @game_over = true
-      puts "You win! You correctly guessed the word:"
+      display_winner
     end
   end
 end
