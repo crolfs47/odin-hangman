@@ -1,6 +1,12 @@
 # display module handles methods for displaying text content
 
 module Display
+  def display_instructions
+    puts 'Welcome to Hangman!'
+    puts 'The computer randomly selected a word between 5 and 12 characters long.'
+    puts 'Guess the word before you run out of incorrect guesses to win!'
+  end
+
   def display_guessed_word(guessed_word)
     puts "#{guessed_word.join(' ')}"
   end

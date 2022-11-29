@@ -6,7 +6,7 @@ class Game
   include Display
 
   def initialize
-    puts 'Welcome to Hangman!'
+    display_instructions
     @guess_count = 8
     @game_over = false
     @word = select_random_word
