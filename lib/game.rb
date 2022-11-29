@@ -1,7 +1,7 @@
 class Game
   def initialize
     puts 'Welcome to Hangman!'
-    @guess_count = 10
+    @guess_count = 8
     @game_over = false
     @word = select_random_word
     @guessed_word = ['_'] * @word.length
@@ -12,7 +12,6 @@ class Game
 
   def play_game
     p @word
-    p @guessed_word.join
     take_turn until @game_over
   end
 
@@ -29,6 +28,8 @@ class Game
     guess = guess_letter
     evaluate_guess(guess)
     check_game_over
+    display_guessed_word
+    display_guesses_remaining unless @game_over
   end
 
   def guess_letter
@@ -43,13 +44,13 @@ class Game
   end
 
   def evaluate_guess(letter)
+    puts ''
     if @word.include?(letter)
       puts 'Good guess!'
       update_guessed_word(letter)
     else
       puts "Sorry, #{letter} is not in the word!"
       @guess_count -= 1
-      puts "Incorrect guesses remaining: #{@guess_count}"
     end
   end
 
@@ -57,13 +58,24 @@ class Game
     @word.split('').each_with_index do |_letter, index|
       @guessed_word[index] = guess if guess == @word[index]
     end
-    p @guessed_word
+  end
+
+  def display_guessed_word
+    puts "#{@guessed_word.join(' ')}"
+  end
+
+  def display_guesses_remaining
+    puts "Incorrect guesses remaining: #{@guess_count}\n\n"
   end
 
   def check_game_over
     if @guess_count.zero?
       @game_over = true
       puts "You ran out of guesses! The word you were trying to guess was: #{@word}"
+    end
+    if @guessed_word.join == @word
+      @game_over = true
+      puts "You win! You correctly guessed the word:"
     end
   end
 end
