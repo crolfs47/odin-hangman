@@ -7,6 +7,12 @@ module Display
     puts 'Guess the word before you run out of incorrect guesses to win!'
   end
 
+  def display_game_option
+    puts 'Would you like to start a new game or load a saved game?'
+    puts '(1) Start a new game'
+    puts '(2) Load a saved game'
+  end
+
   def display_guessed_word(guessed_word)
     puts "#{guessed_word.join(' ')}"
   end

@@ -20,6 +20,7 @@ class Game
 
   def play_game
     # p @word
+    choose_game_option
     take_turn until @game_over
   end
 
@@ -30,6 +31,19 @@ class Game
       word_list.push(line.strip) if line.strip.length >= 5 && line.strip.length <= 12
     end
     @word = word_list.sample
+  end
+
+  def choose_game_option
+    display_game_option
+    game_option = gets.chomp
+    return if game_option == '1'
+
+    if game_option == '2'
+      p 'open saved game'
+    else
+      puts 'Please input only 1 or 2'
+      choose_game_option
+    end
   end
 
   def take_turn
