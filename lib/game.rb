@@ -19,8 +19,7 @@ class Game
   end
 
   def play_game
-    # p @word
-    choose_game_option
+    choose_game_option unless @game_over
     take_turn until @game_over
   end
 
@@ -40,6 +39,7 @@ class Game
 
     if game_option == '2'
       load_saved_game
+      display_game_board
     else
       puts 'Please input only 1 or 2'
       choose_game_option
@@ -51,9 +51,7 @@ class Game
     @guessed_letters.push(@guess)
     evaluate_guess(@guess) unless @game_over
     check_game_over
-    display_guessed_word(@guessed_word) unless @game_over
-    display_guesses_remaining(@guess_count) unless @game_over
-    display_guessed_letters(@guessed_letters) unless @game_over
+    display_game_board
   end
 
   def guess_letter

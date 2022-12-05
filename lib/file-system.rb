@@ -4,7 +4,12 @@ module FileSystem
   def save_game
     Dir.mkdir('saved_games') unless Dir.exist?('saved_games')
     file_name = "saved_games/#{choose_file_name}.yaml"
-    yaml_dump = YAML.dump(self)
+    yaml_dump = YAML.dump({
+                            guess_count: @guess_count,
+                            word: @word,
+                            guessed_word: @guessed_word,
+                            guessed_letters: @guessed_letters
+                          })
     File.open(file_name, 'w') do |file|
       file.write yaml_dump
     end
@@ -24,8 +29,13 @@ module FileSystem
   end
 
   def load_saved_game
-    saved_game = choose_saved_game
-    p saved_game
+    saved_game_name = choose_saved_game
+    # couldn't figure out how to open the game with safe_load, so used unsafe_load in the meantime
+    saved_game = YAML.unsafe_load(File.open("saved_games/#{saved_game_name}", 'r'))
+    @guess_count = saved_game[:guess_count]
+    @word = saved_game[:word]
+    @guessed_word = saved_game[:guessed_word]
+    @guessed_letters = saved_game[:guessed_letters]
   end
 
   def choose_saved_game

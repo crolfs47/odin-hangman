@@ -1,17 +1,17 @@
 ---
-:guess_count: 6
-:word: courier
+:guess_count: 7
+:word: superior
 :guessed_word:
 - _
-- o
 - _
-- r
 - _
 - e
+- r
+- _
+- o
 - r
 :guessed_letters:
 - e
 - a
 - o
 - r
-- t

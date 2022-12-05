@@ -25,6 +25,12 @@ module Display
     puts "Letters already guessed: #{guessed_letters.join(' ')}\n\n"
   end
 
+  def display_game_board
+    display_guessed_word(@guessed_word) unless @game_over
+    display_guesses_remaining(@guess_count) unless @game_over
+    display_guessed_letters(@guessed_letters) unless @game_over
+  end
+
   def display_loser(word)
     puts "You ran out of guesses! The word you were trying to guess was: #{word.upcase}."
   end
