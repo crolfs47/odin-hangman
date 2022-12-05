@@ -13,7 +13,13 @@ module FileSystem
   end
 
   def choose_file_name
-    puts 'Please input a filename to save your game:'
-    gets.chomp
+    puts 'Please input a file name to save your game:'
+    file_name = gets.chomp
+    if File.exist?("saved_games/#{file_name}.yaml")
+      puts 'File name already exists.'
+      choose_file_name
+    else
+      file_name
+    end
   end
 end

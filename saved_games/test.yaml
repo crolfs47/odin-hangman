@@ -1,19 +1,23 @@
 --- !ruby/object:Game
 guess_count: 5
 game_over: false
-word: firefox
+word: prescribed
 guessed_word:
-- _
 - _
 - r
 - e
+- s
+- _
+- r
 - _
 - _
+- e
 - _
 guessed_letters:
 - e
-- t
-- "n"
-- s
 - r
+- s
+- t
+- f
+- "y"
 guess: save
