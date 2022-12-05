@@ -24,8 +24,20 @@ module FileSystem
   end
 
   def load_saved_game
-    puts 'Please select the number of the game you would like to open'
-    list_saved_games
+    saved_game = choose_saved_game
+    p saved_game
+  end
+
+  def choose_saved_game
+    puts 'Please select the number of the game you would like to open:'
+    saved_games = list_saved_games
+    file_number = gets.chomp.to_i
+    if file_number.between?(1, saved_games.length)
+      saved_games[file_number - 1]
+    else
+      puts 'File number does not exist'
+      choose_saved_game
+    end
   end
 
   def list_saved_games
