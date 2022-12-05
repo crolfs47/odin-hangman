@@ -39,7 +39,7 @@ class Game
     return if game_option == '1'
 
     if game_option == '2'
-      p 'open saved game'
+      load_saved_game
     else
       puts 'Please input only 1 or 2'
       choose_game_option

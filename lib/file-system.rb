@@ -22,4 +22,16 @@ module FileSystem
       file_name
     end
   end
+
+  def load_saved_game
+    puts 'Please select the number of the game you would like to open'
+    list_saved_games
+  end
+
+  def list_saved_games
+    saved_games = Dir.glob('*', base: 'saved_games')
+    saved_games.each_with_index do |file, index|
+      puts "(#{index + 1}) #{file}"
+    end
+  end
 end

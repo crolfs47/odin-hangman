@@ -1,0 +1,18 @@
+--- !ruby/object:Game
+guess_count: 7
+game_over: false
+word: actors
+guessed_word:
+- a
+- _
+- _
+- o
+- r
+- s
+guessed_letters:
+- e
+- a
+- o
+- s
+- r
+guess: save

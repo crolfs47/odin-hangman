@@ -1,4 +1,4 @@
-# display module handles methods for displaying text content
+# display module handles methods for displaying wordy text content
 
 module Display
   def display_instructions
