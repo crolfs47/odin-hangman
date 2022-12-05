@@ -20,10 +20,10 @@ module Display
   end
 
   def display_loser(word)
-    puts "You ran out of guesses! The word you were trying to guess was: #{word}."
+    puts "You ran out of guesses! The word you were trying to guess was: #{word.upcase}."
   end
 
-  def display_winner
-    puts 'You win! You correctly guessed the word:'
+  def display_winner(word)
+    puts "You win! You correctly guessed the word: #{word.upcase}."
   end
 end

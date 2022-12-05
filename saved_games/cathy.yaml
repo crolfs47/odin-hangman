@@ -1,0 +1,20 @@
+--- !ruby/object:Game
+guess_count: 6
+game_over: false
+word: mounting
+guessed_word:
+- _
+- o
+- _
+- _
+- t
+- i
+- _
+- _
+guessed_letters:
+- e
+- a
+- i
+- o
+- t
+guess: save

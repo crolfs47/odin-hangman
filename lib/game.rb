@@ -1,9 +1,12 @@
 # game class initializes the game and handles the game logic
 
 require_relative 'display'
+require_relative 'file-system'
+require 'yaml'
 
 class Game
   include Display
+  include FileSystem
 
   def initialize
     display_instructions
@@ -30,20 +33,22 @@ class Game
   end
 
   def take_turn
-    guess = guess_letter
-    @guessed_letters.push(guess)
-    evaluate_guess(guess)
+    guess_letter
+    @guessed_letters.push(@guess)
+    evaluate_guess(@guess) unless @game_over
     check_game_over
-    display_guessed_word(@guessed_word)
+    display_guessed_word(@guessed_word) unless @game_over
     display_guesses_remaining(@guess_count) unless @game_over
     display_guessed_letters(@guessed_letters) unless @game_over
   end
 
   def guess_letter
-    puts 'Please enter a letter:'
-    guess = gets.chomp
-    if guess.length == 1 && guess.downcase.match(/^[a-z]$/) && !@guessed_letters.include?(guess)
-      guess.downcase
+    puts "Please enter a letter or type 'save' to save your game:"
+    @guess = gets.chomp
+    if @guess.length == 1 && @guess.downcase.match(/^[a-z]$/) && !@guessed_letters.include?(@guess)
+      @guess.downcase
+    elsif @guess == 'save'
+      save_game
     else
       puts "Please input only one letter that you haven't already guessed"
       guess_letter
@@ -74,7 +79,7 @@ class Game
     end
     if @guessed_word.join == @word
       @game_over = true
-      display_winner
+      display_winner(@word)
     end
   end
 end

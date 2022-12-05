@@ -1,0 +1,14 @@
+--- !ruby/object:Game
+guess_count: 8
+game_over: false
+word: reunion
+guessed_word:
+- _
+- _
+- _
+- _
+- _
+- _
+- _
+guessed_letters: []
+guess: save

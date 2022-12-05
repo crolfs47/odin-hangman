@@ -1,0 +1,19 @@
+--- !ruby/object:Game
+guess_count: 5
+game_over: false
+word: firefox
+guessed_word:
+- _
+- _
+- r
+- e
+- _
+- _
+- _
+guessed_letters:
+- e
+- t
+- "n"
+- s
+- r
+guess: save
