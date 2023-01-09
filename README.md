@@ -20,3 +20,5 @@ Build a simple command line Hangman game where one player plays against the comp
  - Game board display
 
 Assignment - https://www.theodinproject.com/lessons/ruby-hangman
+
+Play here - https://replit.com/@CathyRolfs/Hangman?v=1
